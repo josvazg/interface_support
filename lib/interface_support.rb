@@ -4,7 +4,7 @@ module InterfaceSupport
   # Interface module is a marker to use in any interface declaration
   # Interfaces are expected to define hierarchies or compositions, but should
   # not be instantiated. Usage:
-  # - For humans to read what an interface is called and what methods it contains.
+  # - For humans to read the interface name and what methods it contains.
   # - For code to check if an object implements that interface or not.
   module Interface
     # Empty Interface marker module
@@ -40,7 +40,7 @@ module InterfaceSupport
   def self.implements?(obj, interface)
     interface_checks(obj, interface).empty?
   end
-  
+
   # Private class methods
 
   def self.interface_checks(obj, interface)
