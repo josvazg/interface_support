@@ -23,6 +23,7 @@ module InterfaceSupport
     assert_interface(interface)
     issues = interface_checks(obj, interface)
     return if issues.empty?
+
     raise "#{obj.class} fails to implement interface #{interface}:\n" +
           issues.join("\n")
   end
@@ -70,22 +71,23 @@ module InterfaceSupport
                 "#{actual_parameters.size}"
       return
     end
-    expected_parameters.each_with_index do |expected_param, i|
-      issue = param_check(expected_param, i, actual_parameters)
+    expected_parameters.each_with_index do |expected_param, index|
+      issue = param_check(expected_param, index, actual_parameters)
       issues << issue if issue
     end
   end
 
-  def self.param_check(expected_param, i, actual_parameters)
-    param_required, param_name = actual_parameters[i]
+  def self.param_check(expected_param, index, actual_parameters)
+    param_required, param_name = actual_parameters[index]
     expected_required, expected_name = expected_param
     unless expected_name == param_name
       return "#{obj.class}'s method #{method_name} expected "\
-             "parameter #{i} to be #{expected_name} but got #{param_name}"
+             "parameter #{index} to be #{expected_name} but got #{param_name}"
     end
     return if expected_required == param_required
+
     "#{obj.class}'s method #{method_name} "\
-    "parameter #{i} (#{param_name}) expected to be "\
+    "parameter #{index} (#{param_name}) expected to be "\
     "#{expected_required == :req ? 'required' : 'optional'} "\
     "but is #{param_required == :req ? 'required' : 'optional'}"
   end
@@ -95,6 +97,7 @@ module InterfaceSupport
     return if interface.is_a?(expected_base)
     # Ok also if any of the module ancestors is InterfaceSupport::Interface
     return if interface.ancestors.find { |a| a.is_a?(expected_base) }
+
     raise "interface must be an #{expected_base} "\
           "but #{interface} is not"
   end
