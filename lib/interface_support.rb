@@ -2,15 +2,15 @@
 # Ruby's native duck typing
 module InterfaceSupport
   # Interface module is a marker to use in any interface declaration
-  # Interfaces are expected to define hierarchies or compositions, but not
-  # should not be instantiated. Their usage is:
-  # For humans to read what an interface is called and what methods it contains.
-  # For code to check if an object implements that interface or not.
+  # Interfaces are expected to define hierarchies or compositions, but should
+  # not be instantiated. Usage:
+  # - For humans to read what an interface is called and what methods it contains.
+  # - For code to check if an object implements that interface or not.
   module Interface
     # Empty Interface marker module
   end
 
-  # Assertion that fails if obj's class doesn't implement any of interface
+  # Assertion that fails if obj's class doesn't implement all of interface
   # defined methods.
   # Use it on any object that is expected to implement interface.
   # @param obj [Object] object instance to test method implementation against
@@ -40,6 +40,8 @@ module InterfaceSupport
   def self.implements?(obj, interface)
     interface_checks(obj, interface).empty?
   end
+  
+  # Private class methods
 
   def self.interface_checks(obj, interface)
     assert_interface(interface)
@@ -57,8 +59,6 @@ module InterfaceSupport
     end
     issues
   end
-
-  # Private class methods
 
   def self.signature_checks(issues, obj, expected_method, actual_method)
     expected_parameters = expected_method.parameters
@@ -99,5 +99,8 @@ module InterfaceSupport
           "but #{interface} is not"
   end
 
-  private_class_method :signature_checks, :assert_interface
+  private_class_method :interface_checks,
+                       :signature_checks,
+                       :param_check,
+                       :assert_interface
 end
