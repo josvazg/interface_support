@@ -53,6 +53,6 @@ The ***implements?*** helper is a test that will return ***true*** ONLY if the p
 **InterfaceSupport** brings Go-like interfaces to Ruby, rather than other styles like Java Interfaces. The reasons are many:
 * Go style interfaces play better with Ruby natural duck-typing.
 * You don't need to pollute the code inheritance tree further with references to Interfaces.
-* Not having to explicitly incldue in thdefinition that a class implements an interface allows to use interfaces discovered after the fact, without having to change code, specially if that code is from a 3rd party library.
+* Not having to explicitly include in the definition that a class implements an interface allows to use interfaces discovered after the fact, without having to change code, specially if that code is from a 3rd party library.
 
 Adding matching interface definition and calling implements is all it takes to start documenting and enforcing a particular interface.
