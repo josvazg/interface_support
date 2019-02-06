@@ -34,8 +34,8 @@ module CompositedInterface
   include AnInterface
 ...
 ```
+* **CompositedInterface** includes all methods from included interfaces plus the ones defined by it, if any.
 * No need to also extend **InterfaceSupport::interface**.
-* And **CompositedInterface** includes all methods from included interfaces plus the ones defined by it, if any.
 
 Apart from allowing you to ***declare intentions*** in code, that would not be too useful without a way to also ***enforce them***. For that you have 2 helper methods within **InterfaceSupport::interface**:
 
