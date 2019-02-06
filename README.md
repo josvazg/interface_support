@@ -44,7 +44,7 @@ def implements(obj, interface)
 ...
 def implements?(obj, interface)
 ```
-The ***implements*** helper is an assertion that inly succeeds when the passed object instance **obj** implements ALL methods defined in **interface**. That includes not just having the right method name, but also the right signature for parameters. If there are any violations to the interface, an exception is raised explaining all issues found. It can be used in unit tests or whenever the code following the assert expects **obj** will honor **interface**.
+The ***implements*** helper is an assertion that only succeeds when the passed object instance **obj** implements ALL methods defined in **interface**. That includes not just having the right method name, but also the right signature for parameters. If there are any violations to the interface, an exception is raised explaining all issues found. It can be used in unit tests or whenever the code following the assert expects **obj** will honor **interface**.
 
 The ***implements?*** helper is a test that will return ***true*** ONLY if the passed object instance **obj** implements ALL defined in **interface** methods with correct signatures. It can be used to decide to use an **interface** on **obj** or not.
 
