@@ -37,7 +37,7 @@ module CompositedInterface
 * **CompositedInterface** includes all methods from included interfaces plus the ones defined by it, if any.
 * No need to also extend **InterfaceSupport::interface**.
 
-Apart from allowing you to ***declare intentions*** in code, that would not be too useful without a way to also ***enforce them***. For that you have 2 helper methods within **InterfaceSupport::interface**:
+Apart from allowing you to ***declare intentions*** in code, that would not be too useful without a way to also ***enforce them***. For that you have 2 helper methods within **InterfaceSupport**:
 
 ```ruby
 def implements(obj, interface)
